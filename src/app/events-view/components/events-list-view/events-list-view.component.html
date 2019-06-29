@@ -1,0 +1,5 @@
+<ul class="events-list">
+  <li class="events-list__item" *ngFor="let event of events">
+    <event-card [event]="event" (modifyEvent)="openEventSidebar($event)"></event-card>
+  </li>
+</ul>
