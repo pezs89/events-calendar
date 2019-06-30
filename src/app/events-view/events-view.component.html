@@ -22,6 +22,7 @@
     <events-calendar-view
       *ngIf="eventsViewMode === 'calendar'"
       [events]="events"
+      (dateClicked)="editEvent($event)"
     ></events-calendar-view>
     <events-list-view
       *ngIf="eventsViewMode === 'list'"

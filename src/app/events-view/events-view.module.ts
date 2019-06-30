@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 import { EventsViewComponent } from './events-view.component';
 import { EventsListViewComponent } from './components/events-list-view/events-list-view.component';
@@ -15,6 +16,11 @@ import { SharedModule } from '../shared/shared.module';
     EventsListViewComponent,
     EventsCalendarViewComponent
   ],
-  imports: [CommonModule, SharedModule, EventsViewRoutingModule]
+  imports: [
+    CommonModule,
+    SharedModule,
+    FullCalendarModule,
+    EventsViewRoutingModule
+  ]
 })
 export class EventsViewModule {}

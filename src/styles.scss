@@ -3,6 +3,8 @@ $material-icons-font-path: '~material-icons/iconfont/';
 
 @import '~material-icons/iconfont/material-icons.scss';
 @import "~ng-pick-datetime/assets/style/picker.min.css";
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
 
 body {
   margin: 5% 10%;
