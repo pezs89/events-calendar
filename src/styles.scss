@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 $material-icons-font-path: '~material-icons/iconfont/';
- 
+
 @import '~material-icons/iconfont/material-icons.scss';
+
+body {
+  margin: 5% 10%;
+  background: rgba(248,248,248,0.01);
+}

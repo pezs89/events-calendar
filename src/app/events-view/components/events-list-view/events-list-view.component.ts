@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 
+import { SidebarService } from 'src/app/core/services/sidebar.service';
 import { Event } from '../../../core/models/events';
 
 @Component({
@@ -10,7 +11,9 @@ import { Event } from '../../../core/models/events';
 export class EventsListViewComponent {
   @Input() events: Event[];
 
+  constructor(private sidebarService: SidebarService) {}
+
   openEventSidebar(event: Event) {
-    console.log(event);
+    this.sidebarService.openSidebar();
   }
 }

@@ -1,0 +1,10 @@
+<div
+  class="sidebar"
+  *ngIf="isSidebarOpened"
+  @slideIn
+  clickOutside
+  [excludedClasses]="'material-icons--create,material-icons--edit'"
+  (clickedOutside)="clickedOutside($event)"
+>
+  <ng-content></ng-content>
+</div>

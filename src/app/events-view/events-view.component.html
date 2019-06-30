@@ -1,5 +1,32 @@
-<section>
-  Calendarview
-  <events-calendar-view [events]="events"></events-calendar-view>
-  <events-list-view [events]="events"></events-list-view>
+<section class="events-view">
+  <div class="events-view__actions">
+    <span
+      class="material-icons"
+      (click)="changeViewMode('calendar')"
+      [ngClass]="{ 'material-icons--active': eventsViewMode === 'calendar' }"
+      >calendar_today</span
+    >
+    <span
+      class="material-icons"
+      (click)="changeViewMode('list')"
+      [ngClass]="{ 'material-icons--active': eventsViewMode === 'list' }"
+      >list</span
+    >
+    <span
+      class="material-icons material-icons--create"
+      (click)="createNewEvent()"
+      >add</span
+    >
+  </div>
+  <div class="events-view__data">
+    <events-calendar-view
+      *ngIf="eventsViewMode === 'calendar'"
+      [events]="events"
+    ></events-calendar-view>
+    <events-list-view
+      *ngIf="eventsViewMode === 'list'"
+      [events]="events"
+    ></events-list-view>
+  </div>
+  <sidebar> </sidebar>
 </section>
