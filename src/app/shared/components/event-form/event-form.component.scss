@@ -1,0 +1,10 @@
+.event-form {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+
+  > input {
+      margin: 10px 0;
+  }
+}

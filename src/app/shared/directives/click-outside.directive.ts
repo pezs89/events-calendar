@@ -14,7 +14,6 @@ export class ClickOutsideDirective {
   private excludedClassesList: string[] = [];
   @Input() set excludedClasses(classes: string) {
     this.excludedClassesList = this.getExludedClassesList(classes);
-    console.log(this.excludedClassesList);
   }
   @Output() clickedOutside: EventEmitter<boolean> = new EventEmitter<boolean>();
 

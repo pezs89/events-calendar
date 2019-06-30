@@ -1,0 +1,8 @@
+<form class="event-form" [formGroup]="eventForm" (ngSubmit)="onSubmit()" novalidate>
+  <input formControlName="title" type="text" />
+  <input formControlName="description" type="text" />
+  <input formControlName="startDate" type="datetime" />
+  <input formControlName="endDate" type="datetime" />
+  <input formControlName="isAllDay" type="checkbox" />
+  <button type="submit">Submit</button>
+</form>

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'event-form',
@@ -8,6 +8,7 @@ import { FormBuilder } from '@angular/forms';
 })
 export class EventFormComponent implements OnInit {
   @Input() eventDetails: any;
+  eventForm: FormGroup;
 
   constructor(private fb: FormBuilder) {}
 
@@ -15,5 +16,16 @@ export class EventFormComponent implements OnInit {
     this.initializeForm();
   }
 
-  initializeForm() {}
+  initializeForm() {
+    this.eventForm = this.fb.group({
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      startDate: [new Date(), Validators.required],
+      endDate: [null],
+      isAllDay: [false, Validators.required],
+      location: ['', Validators.required]
+    });
+  }
+
+  onSubmit() {}
 }
