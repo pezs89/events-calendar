@@ -1,5 +1,11 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { EventInput } from '@fullcalendar/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGrigPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -11,19 +17,25 @@ import { Event } from '../../../core/models/events';
   templateUrl: './events-calendar-view.component.html',
   styleUrls: ['./events-calendar-view.component.scss']
 })
-export class EventsCalendarViewComponent implements OnInit {
+export class EventsCalendarViewComponent implements OnChanges {
   @Input() events: Event[];
   @Output() dateClicked = new EventEmitter<Event>();
   calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin];
   transformedEvents: Array<any>;
 
-  ngOnInit() {
-    this.transformedEvents = this.transformEvents();
+  ngOnChanges(changes: SimpleChanges) {
+    if (
+      changes.events &&
+      changes.events.currentValue !== changes.events.previousValue
+    ) {
+      this.transformedEvents = this.transformEvents();
+    }
   }
 
   transformEvents(): Array<any> {
     return this.events.map(ev => {
       return {
+        id: ev.guId,
         title: ev.title,
         start: ev.startDate,
         end: ev.endDate,
@@ -42,5 +54,18 @@ export class EventsCalendarViewComponent implements OnInit {
       isAllDay: false
     };
     this.dateClicked.emit(newEvent);
+  }
+
+  onSelect(event: any) {
+    const editedEvent: Event = {
+      guId: event.event.id,
+      title: event.event.title,
+      description: event.event.description,
+      startDate: Date.parse(event.event.start),
+      endDate: Date.parse(event.event.end),
+      location: event.event.location,
+      isAllDay: event.event.allDay
+    };
+    this.dateClicked.emit(editedEvent);
   }
 }

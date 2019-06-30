@@ -76,7 +76,11 @@ export class EventFormComponent implements OnInit {
     this.submitted = true;
     if (this.eventForm.valid) {
       const event: Event = {
-        ...this.eventForm.value,
+        guId: this.eventForm.value.guId,
+        title: this.eventForm.value.title,
+        description: this.eventForm.value.description,
+        location: this.eventForm.value.location,
+        isAllDay: this.eventForm.value.isAllDay,
         startDate: Date.parse(this.eventForm.value.dates.startDate),
         endDate: Date.parse(this.eventForm.value.dates.endDate)
       };

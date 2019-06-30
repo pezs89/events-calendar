@@ -2,8 +2,7 @@
   defaultView="dayGridMonth"
   [plugins]="calendarPlugins"
   [events]="transformedEvents"
+  [editable]="true"
+  (eventClick)="onSelect($event)"
   (dateClick)="onDateClick($event)"
 ></full-calendar>
-<!-- <div *ngFor="let event of events">
-  {{ event | json }}
-</div> -->

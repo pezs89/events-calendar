@@ -44,13 +44,19 @@ export class EventsViewComponent implements OnInit, OnDestroy {
     }
   }
 
-  createNewEvent() {
+  openSidebar() {
     this.sidebarService.openSidebar();
   }
 
   editEvent(event: Event) {
-    this.createNewEvent();
-    this.eventDetails = event;
+    this.openSidebar();
+    let editableEvent: Event;
+    if (event.guId) {
+      editableEvent = { ...this.events.find(ev => ev.guId === event.guId) };
+    } else {
+      editableEvent = { ...event };
+    }
+    this.eventDetails = editableEvent;
   }
 
   onFormSubmitted(event: Event) {

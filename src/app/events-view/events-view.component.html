@@ -12,9 +12,7 @@
       [ngClass]="{ 'material-icons--active': eventsViewMode === 'calendar' }"
       >calendar_today</span
     >
-    <span
-      class="material-icons material-icons--create"
-      (click)="createNewEvent()"
+    <span class="material-icons material-icons--create" (click)="openSidebar()"
       >add</span
     >
   </div>
@@ -31,6 +29,10 @@
     ></events-list-view>
   </div>
   <sidebar>
-    <event-form *ngIf="isSidebarOpened" [eventDetails]="eventDetails" (formSubmitted)="onFormSubmitted($event)"></event-form>
+    <event-form
+      *ngIf="isSidebarOpened"
+      [eventDetails]="eventDetails"
+      (formSubmitted)="onFormSubmitted($event)"
+    ></event-form>
   </sidebar>
 </section>
