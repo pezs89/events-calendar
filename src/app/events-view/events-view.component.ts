@@ -14,8 +14,11 @@ import { SidebarService } from '../core/services/sidebar.service';
 })
 export class EventsViewComponent implements OnInit, OnDestroy {
   events: Array<Event>;
-  eventsViewMode: EventsViewMode = EventsViewMode.CALENDAR;
+  eventDetails: Event;
+  isSidebarOpened: boolean;
+  eventsViewMode: EventsViewMode = EventsViewMode.LIST;
   private events$: Subscription;
+  private isSidebarOpened$: Subscription;
 
   constructor(
     private eventsService: EventsService,
@@ -26,6 +29,12 @@ export class EventsViewComponent implements OnInit, OnDestroy {
     this.events$ = this.eventsService.eventsChanged$.subscribe(evs => {
       this.events = evs;
     });
+    this.isSidebarOpened$ = this.sidebarService.sidebarStateChanged$.subscribe(
+      isOpened => {
+        this.isSidebarOpened = isOpened;
+        this.eventDetails = null;
+      }
+    );
     this.eventsService.getEvents();
   }
 
@@ -39,7 +48,18 @@ export class EventsViewComponent implements OnInit, OnDestroy {
     this.sidebarService.openSidebar();
   }
 
+  editEvent(event: Event) {
+    this.createNewEvent();
+    this.eventDetails = event;
+  }
+
+  onFormSubmitted(event: Event) {
+    this.eventsService.createEvent(event);
+    this.sidebarService.closeSidebar();
+  }
+
   ngOnDestroy() {
     this.events$.unsubscribe();
+    this.isSidebarOpened$.unsubscribe();
   }
 }

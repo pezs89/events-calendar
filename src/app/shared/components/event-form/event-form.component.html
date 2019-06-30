@@ -1,8 +1,79 @@
-<form class="event-form" [formGroup]="eventForm" (ngSubmit)="onSubmit()" novalidate>
-  <input formControlName="title" type="text" />
-  <input formControlName="description" type="text" />
-  <input formControlName="startDate" type="datetime" />
-  <input formControlName="endDate" type="datetime" />
-  <input formControlName="isAllDay" type="checkbox" />
-  <button type="submit">Submit</button>
+<form class="event-form" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+  <div class="event-form__group">
+    <label for="title">
+      Title
+    </label>
+    <input
+      [ngClass]="{
+        'input-error': getControl('title').invalid && submitted
+      }"
+      formControlName="title"
+      type="text"
+    />
+  </div>
+  <div class="event-form__group">
+    <label for="description">
+      Description
+    </label>
+    <input
+      [ngClass]="{
+        'input-error': getControl('description').invalid && submitted
+      }"
+      formControlName="description"
+      type="text"
+    />
+  </div>
+  <div class="dates" formGroupName="dates">
+    <div class="event-form__group">
+      <label for="title">
+        Start Date
+      </label>
+      <input
+        formControlName="startDate"
+        type="datetime-local"
+        [ngClass]="{
+          'input-error': getControl('dates').invalid && submitted
+        }"
+      />
+    </div>
+    <div class="event-form__group">
+      <label for="title">
+        End Date
+      </label>
+      <input
+        formControlName="endDate"
+        type="datetime-local"
+        [ngClass]="{
+          'input-error': getControl('dates').invalid && submitted
+        }"
+      />
+    </div>
+  </div>
+  <div class="event-form__group event-form__group--inline">
+    <label for="isAllDay">
+      All day
+    </label>
+    <input
+      formControlName="isAllDay"
+      type="checkbox"
+      [ngClass]="{
+        'input-error': getControl('isAllDay').invalid && submitted
+      }"
+    />
+  </div>
+  <div class="event-form__group">
+    <label for="location">
+      Location
+    </label>
+    <input
+      [ngClass]="{
+        'input-error': getControl('location').invalid && submitted
+      }"
+      formControlName="location"
+      type="text"
+    />
+  </div>
+  <div class="event-form__group event-form__group--inline">
+    <button type="submit">Submit</button>
+  </div>
 </form>

@@ -4,14 +4,24 @@
       {{ event.title }}
     </div>
     <div class="card__header-edit">
-      <span class="material-icons material-icons--edit" (click)="editEvent()">create</span>
+      <span class="material-icons material-icons--edit" (click)="editEvent()"
+        >create</span
+      >
     </div>
   </div>
   <div class="card__body">
-    <div class="card__start-date">Start date: {{ event.startDate | date }}</div>
-    <div class="card__end-date">Start date: {{ event.endDate | date }}</div>
+    <div class="card__start-date">Start date: {{ event.startDate | date: 'short' }}</div>
+    <div class="card__end-date">End date: {{ event.endDate | date: 'short' }}</div>
     <div class="card__description">
-      {{ event.description }}
+      Description: {{ event.description }}
+    </div>
+    <div class="card__description">
+      Location: {{ event.location }}
+    </div>
+    <div class="card__description">
+      All day: 
+      <span *ngIf="event.isAllDay" class="material-icons material-icons--success">done</span>
+      <span *ngIf="!event.isAllDay" class="material-icons material-icons--error">error_outline</span>
     </div>
   </div>
 </div>

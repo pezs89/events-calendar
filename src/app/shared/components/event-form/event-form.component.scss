@@ -3,8 +3,42 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-
-  > input {
+  padding: 10px 20px;
+  .input-error {
+    border: solid 1px #b00020;
+  }
+  &__group {
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    > input {
+      height: calc(100% - 20px);
       margin: 10px 0;
+      font-size: 14px;
+      padding: 0 5px;
+      &:focus {
+        outline: none;
+        border: 1px solid #fc6b00;
+      }
+    }
+    > button {
+      height: 40px;
+      background-color: #fc6b00;
+      border: none;
+      outline: none;
+      width: 100%;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      text-transform: uppercase;
+      box-shadow: 0 3px 7px rgba(0, 0, 0, 0.25);
+    }
+    &--inline {
+      flex-direction: row;
+      align-items: center;
+      > input {
+        margin: 10px 5px;
+      }
+    }
   }
 }

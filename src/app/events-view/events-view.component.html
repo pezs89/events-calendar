@@ -2,15 +2,15 @@
   <div class="events-view__actions">
     <span
       class="material-icons"
-      (click)="changeViewMode('calendar')"
-      [ngClass]="{ 'material-icons--active': eventsViewMode === 'calendar' }"
-      >calendar_today</span
-    >
-    <span
-      class="material-icons"
       (click)="changeViewMode('list')"
       [ngClass]="{ 'material-icons--active': eventsViewMode === 'list' }"
       >list</span
+    >
+    <span
+      class="material-icons"
+      (click)="changeViewMode('calendar')"
+      [ngClass]="{ 'material-icons--active': eventsViewMode === 'calendar' }"
+      >calendar_today</span
     >
     <span
       class="material-icons material-icons--create"
@@ -26,9 +26,10 @@
     <events-list-view
       *ngIf="eventsViewMode === 'list'"
       [events]="events"
+      (editEvent)="editEvent($event)"
     ></events-list-view>
   </div>
   <sidebar>
-    <event-form></event-form>
+    <event-form *ngIf="isSidebarOpened" [eventDetails]="eventDetails" (formSubmitted)="onFormSubmitted($event)"></event-form>
   </sidebar>
 </section>

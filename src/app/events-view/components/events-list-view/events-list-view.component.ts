@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { SidebarService } from 'src/app/core/services/sidebar.service';
 import { Event } from '../../../core/models/events';
 
 @Component({
@@ -10,10 +9,9 @@ import { Event } from '../../../core/models/events';
 })
 export class EventsListViewComponent {
   @Input() events: Event[];
-
-  constructor(private sidebarService: SidebarService) {}
+  @Output() editEvent = new EventEmitter<Event>();
 
   openEventSidebar(event: Event) {
-    this.sidebarService.openSidebar();
+    this.editEvent.emit(event);
   }
 }

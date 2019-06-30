@@ -17,6 +17,7 @@
   &__header-edit {
     margin-left: auto;
     cursor: pointer;
+    display: flex;
   }
   &__body {
     padding: 10px 15px 20px 15px;
@@ -25,6 +26,16 @@
     flex-direction: column;
     & > div {
       padding: 5px 0;
+      display: flex;
+      align-items: center;
+    }
+    .material-icons {
+      &--error {
+        color: #b00020;
+      }
+      &--success {
+        color: #03dac6;
+      }
     }
   }
 }

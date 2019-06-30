@@ -2,8 +2,9 @@
 $material-icons-font-path: '~material-icons/iconfont/';
 
 @import '~material-icons/iconfont/material-icons.scss';
+@import "~ng-pick-datetime/assets/style/picker.min.css";
 
 body {
   margin: 5% 10%;
-  background: rgba(248,248,248,0.01);
+  background: #fc6b00;
 }
